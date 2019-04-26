@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        width: 100%;
+        border: none;
+        padding: 18px;
+        text-align: left;
+        font-size: 15px;
+        transition: 0.4s;
+      }
+
+      .active,
+      .accordion:hover {
+        background-color: #ccc;
+      }
+
+      /* 这个要在.active:after的前面，否则会覆盖后面 */
+      .accordion:after {
+        content: "\002B";
+        /* 显示在右边 */
+        float: right;
+        font-weight: bold;
+        margin-left: 5px;
+        color: #777;
+      }
+
+      .active:after {
+        content: "\2212";
+      }
+
+      .panel {
+        /* display: none; */
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <div id="app">
+      <h1>Accordion</h1>
+
+      <button class="accordion">Section1</button>
+      <div class="panel">
+        <p>
+          Section1 Section1 Section1 Section1 Section1 Section1 Section1
+          Section1 Section1 Section1 Section1 Section1 Section1 Section1
+          Section1 Section1 Section1 Section1 Section1 Section1 Section1
+          Section1
+        </p>
+      </div>
+
+      <button class="accordion">Section2</button>
+      <div class="panel">
+        <p>
+          Section2 Section2 Section2 Section2 Section2 Section2 Section2
+          Section2 Section2 Section2 Section2 Section2 Section2 Section2
+          Section2 Section2 Section2 Section2 Section2 Section2 Section2
+          Section2
+        </p>
+      </div>
+
+      <button class="accordion">Section3</button>
+      <div class="panel">
+        <p>
+          Section3 Section3 Section3 Section3 Section3 Section3 Section3
+          Section3 Section3 Section3 Section3 Section3 Section3 Section3
+          Section3 Section3 Section3 Section3 Section3 Section3 Section3
+          Section3
+        </p>
+      </div>
+    </div>
+
+    <script src="" async defer></script>
+    <script>
+      let acc = document.getElementsByClassName("accordion");
+      for (let index = 0; index < acc.length; index++) {
+        acc[index].addEventListener("click", function() {
+          this.classList.toggle("active");
+          //返回当前元素在其父元素的子元素节点中的后一个元素节点
+          let panel = this.nextElementSibling;
+
+          /*
+          if(panel.style.display === 'none' || panel.style.display === '') {
+            panel.style.display = 'block';
+          } else {
+            panel.style.display = 'none';
+          }
+          */
+
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+          
+        });
+      }
+    </script>
+  </body>
+</html>
