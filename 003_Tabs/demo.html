@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      .tab {
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+
+      .tablinks {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 17px;
+        padding: 14px 16px;
+        background-color: inherit;
+        float: left;
+      }
+
+      .tablinks:hover {
+        background-color: #ddd;
+      }
+
+      .tab button.active {
+        background-color: #ccc;
+      }
+
+      .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+        animation: fadeEffect 1s;
+        -webkit-animation: fadeEffect 1s;
+        position: relative;
+      }
+
+      @keyframes fadeEffect {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .topright {
+        float: right;
+        cursor: pointer;
+        font-size: 28px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .topright:hover {color: red;}
+
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">
+        London
+      </button>
+      <button
+        class="tablinks"
+        onclick="openCity(event, 'Paris')"
+      >
+        Paris
+      </button>
+      <button class="tablinks" onclick="openCity(event, 'Peking')">
+        Peking
+      </button>
+    </div>
+
+    <div id="London" class="tabcontent">
+      <h3>London</h3>
+      <p>London is the capital city of England.</p>
+      <span onclick="this.parentElement.style.display='none'" class="topright"
+        >x</span
+      >
+    </div>
+
+    <div id="Paris" class="tabcontent">
+      <h3>Paris</h3>
+      <p>Paris is the capital of France.</p>
+      <span onclick="this.parentElement.style.display='none'" class="topright"
+        >x</span
+      >
+    </div>
+
+    <div id="Peking" class="tabcontent">
+      <h3>Tokyo</h3>
+      <p>Tokyo is the capital of Japan.</p>
+      <span onclick="this.parentElement.style.display='none'" class="topright"
+        >x</span
+      >
+    </div>
+
+    <script src="" async defer></script>
+    <script>
+      function openCity(event, cityName) {
+        let tabcontents = document.getElementsByClassName("tabcontent");
+        //先隐藏所有的content
+        for (let index = 0; index < tabcontents.length; index++) {
+          tabcontents[index].style.display = "none";
+        }
+        //tab都取消active
+        let tabs = document.getElementsByClassName("tablinks");
+        Array.prototype.forEach.call(tabs, tab => {
+          tab.className = tab.className.replace(" active", "");
+        });
+        //选中当前的
+        document.getElementById(cityName).style.display = "block";
+        event.currentTarget.className += " active";
+      }
+
+      //默认展示第一个
+      document.getElementById("defaultOpen").click();
+    </script>
+  </body>
+</html>
